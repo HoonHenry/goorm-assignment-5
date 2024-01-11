@@ -4,6 +4,7 @@
 terraform {
 
   cloud {
+    # organization = "k8x2"
     workspaces {
       name = "learn-terraform-eks"
     }

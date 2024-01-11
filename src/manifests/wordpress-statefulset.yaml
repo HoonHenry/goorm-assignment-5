@@ -14,19 +14,6 @@ spec:
     app: wordpress
     tier: frontend
   type: NodePort
-# ---
-# # apiVersion: v1
-# # kind: PersistentVolume
-# # metadata:
-# #   name: wp-pv
-# # spec:
-# #   capacity:
-# #     storage: 5Gi
-# #   accessModes:
-# #     - ReadWriteOnce
-# #   storageClassName: ""
-# #   hostPath:
-# #     path: "/mnt/data"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -38,15 +25,13 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-    # - ReadWriteMany
   storageClassName: ebs-sc
-  # storageClassName: ""
   resources:
     requests:
       storage: 5Gi
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: wordpress
   namespace: assignment
@@ -57,6 +42,8 @@ spec:
     matchLabels:
       app: wordpress
       tier: frontend
+  serviceName: wordpress
+  replicas: 2
   template:
     metadata:
       labels:
@@ -64,8 +51,8 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wordpress:6.2.1-apache
-        name: wordpress
+      - name: wordpress
+        image: wordpress:6.2.1-apache
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
@@ -88,19 +75,15 @@ spec:
           requests:
             cpu: 100m
             memory: 500Mi
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-            httpHeaders:
-            - name: Custom-Header
-              value: Awesome
-          initialDelaySeconds: 3
-          periodSeconds: 3
-      volumes:
-      - name: wordpress-persistent-storage
-        persistentVolumeClaim:
-          claimName: wp-pv-claim
+  volumeClaimTemplates:
+  - metadata:
+      name: wordpress-persistent-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: ebs-sc
+      resources:
+        requests:
+          storage: 5Gi
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

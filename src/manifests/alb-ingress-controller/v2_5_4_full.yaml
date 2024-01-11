@@ -851,7 +851,7 @@ spec:
     spec:
       containers:
       - args:
-        - --cluster-name=education-eks-qWdNHYb4
+        - --cluster-name=education-eks-HIGpiAPo
         - --ingress-class=alb
         image: public.ecr.aws/eks/aws-load-balancer-controller:v2.5.4
         livenessProbe:

@@ -16,6 +16,8 @@ data "aws_availability_zones" "available" {
 
 locals {
   cluster_name = "education-eks-${random_string.suffix.result}"
+  # ing_full= yamldecode(file(var.ing_full_yaml))
+  # ing_class= yamldecode(file(var.ing_class_yaml))
 }
 
 resource "random_string" "suffix" {
@@ -118,11 +120,27 @@ resource "aws_eks_addon" "ebs-csi" {
 }
 
 # resource "aws_iam_policy" "policy" {
-#   name        = "test_policy"
-#   path        = "/"
+#   name        = "AWSLoadBalancerControllerIAMPolicy-${module.eks.cluster_name}"
+#   # path        = "/"
 #   description = "My test policy"
 
 #   # Terraform's "jsonencode" function converts a
 #   # Terraform expression result to valid JSON syntax.
 #   policy = jsonencode(file(var.json_input))
+# }
+
+# module "load_balancer_controller_irsa_role" {
+#   source = "../../modules/iam-role-for-service-accounts-eks"
+
+#   role_name                              = "load-balancer-controller"
+#   attach_load_balancer_controller_policy = true
+
+#   oidc_providers = {
+#     ex = {
+#       provider_arn               = module.eks.oidc_provider_arn
+#       namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
+#     }
+#   }
+
+#   # tags = local.tags
 # }

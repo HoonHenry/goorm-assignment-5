@@ -18,7 +18,7 @@
 #     echo "Creating $NAME for the ingress group name"
 #     sed -i.bak -e "s|your-ingress-group-name|$NAME|" ./wordpress-deployment.yaml && \
 #     kubectl create ns assignment && \
-#     kubectl apply -k ./
+#     kubectl apply -k ./manifests
 # fi
 kubectl create ns assignment && \
-kubectl apply -k ./
+kubectl apply -k ./manifests

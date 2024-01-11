@@ -5,3 +5,4 @@ metadata:
   namespace: assignment
 provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
