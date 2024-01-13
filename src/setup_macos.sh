@@ -1,12 +1,12 @@
 #!/bin/zsh
 #################### terraform settings ###################
-brew tap hashicorp/tap
+brew tap hashicorp/tap && \
 
-brew install hashicorp/tap/terraform
+brew install hashicorp/tap/terraform && \
 
-brew update
+brew update && \
 
-brew upgrade hashicorp/tap/terraform
+brew upgrade hashicorp/tap/terraform && \
 #################### terraform settings ###################
 
 
@@ -19,11 +19,11 @@ aws --version && \
 
 
 #################### kubectl settings ###################
-curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.5/2024-01-04/bin/darwin/amd64/kubectl
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.5/2024-01-04/bin/darwin/amd64/kubectl && \
 
-curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.5/2024-01-04/bin/darwin/amd64/kubectl.sha256
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.5/2024-01-04/bin/darwin/amd64/kubectl.sha256 && \
 
-openssl sha1 -sha256 kubectl
+openssl sha1 -sha256 kubectl && \
 
 sudo mv -v kubectl /usr/local/bin/ && \
 

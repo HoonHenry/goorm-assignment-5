@@ -1,25 +1,25 @@
 #!/bin/bash
 #################### terraform settings ###################
 # for ubuntu/debian, amd64
-sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common && \
 
 wget -O- https://apt.releases.hashicorp.com/gpg | \
 gpg --dearmor | \
-sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
 
 gpg --no-default-keyring \
 --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
---fingerprint
+--fingerprint && \
 
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
 https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo tee /etc/apt/sources.list.d/hashicorp.list && \
 
-sudo apt update
+sudo apt update && \
 
-sudo apt-get install terraform
+sudo apt-get install terraform && \
 
-terraform version
+terraform version && \
 #################### terraform settings ###################
 
 
@@ -60,7 +60,7 @@ kubectl version --client=true --short=true && \
 ARCH=amd64
 PLATFORM=$(uname -s)_$ARCH
 
-curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz" 
 
 # (Optional) Verify checksum
 curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
@@ -68,5 +68,6 @@ curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_ch
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
 sudo mv /tmp/eksctl /usr/local/bin
-eksctl version && \
+
+eksctl version
 #################### eksctl settings ###################
