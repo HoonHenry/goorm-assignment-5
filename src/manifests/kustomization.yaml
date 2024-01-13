@@ -4,10 +4,15 @@ secretGenerator:
   literals:
   - password=test1234
 resources:
+  - ./mysql/storageclass.yaml
+  - ./mysql/pvc.yaml
+  - ./mysql/service.yaml
   # - ./mysql/deployment.yaml
   - ./mysql/statefulset.yaml
-  - ./mysql/storageclass.yaml
-  # - ./wordpress/deployment.yaml
-  - ./wordpress/hpa.yaml
-  - ./wordpress/statefulset.yaml
   - ./wordpress/storageclass.yaml
+  - ./wordpress/pvc.yaml
+  - ./wordpress/service.yaml
+  # - ./wordpress/deployment.yaml
+  - ./wordpress/statefulset.yaml
+  - ./wordpress/hpa.yaml
+  - ./wordpress/ingress.yaml
