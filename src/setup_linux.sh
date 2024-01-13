@@ -26,6 +26,8 @@ terraform version && \
 #################### aws cli settings ###################
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
 
+sudo apt install zip && \
+
 unzip awscliv2.zip && \
 
 sudo ./aws/install && \
@@ -60,14 +62,14 @@ kubectl version --client=true --short=true && \
 ARCH=amd64
 PLATFORM=$(uname -s)_$ARCH
 
-curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz" 
+curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz" && \
 
 # (Optional) Verify checksum
-curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
+curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check && \
 
-tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz && \
 
-sudo mv /tmp/eksctl /usr/local/bin
+sudo mv -v /tmp/eksctl /usr/local/bin && \
 
 eksctl version
 #################### eksctl settings ###################
