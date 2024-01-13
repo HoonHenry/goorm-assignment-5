@@ -7,20 +7,14 @@ variable "region" {
   default     = "ap-northeast-2"
 }
 
-# variable "json_input" {
-#   description = "iam policy input file to create iam policy for eks"
-#   type        = string
-#   default     = "./manifests/alb-ingress-controller/iam_policy.json"
-# }
+variable "k8s_version" {
+  description = "k8s version"
+  type        = string
+  default     = "1.28"
+}
 
-# variable "ing_full_yaml" {
-#   description = "yaml file to create ingress controller"
-#   type        = string
-#   default     = "./manifests/alb-ingress-controller/v2_5_4_full.yaml"
-# }
-
-# variable "ing_class_yaml" {
-#   description = "yaml file to create ing class"
-#   type        = string
-#   default     = "./manifests/alb-ingress-controller/v2_5_4_ingclass.yaml"
-# }
+variable "ebs_csi_addon_version" {
+  description = "ebs csi addon version"
+  type        = string
+  default     = "v1.20.0-eksbuild.1"
+}
