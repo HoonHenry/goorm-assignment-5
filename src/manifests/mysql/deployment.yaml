@@ -76,6 +76,9 @@ spec:
           requests:
             cpu: 200m
             memory: 1Gi
+          limits:
+            cpu: 400m
+            memory: 2Gi
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:

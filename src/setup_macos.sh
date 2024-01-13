@@ -19,8 +19,16 @@ aws --version && \
 
 
 #################### kubectl settings ###################
-sudo curl -o /usr/local/bin/kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.5/2024-01-04/bin/darwin/amd64/kubectl && \
-sudo chmod +x /usr/local/bin/kubectl && \
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.5/2024-01-04/bin/darwin/amd64/kubectl
+
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.5/2024-01-04/bin/darwin/amd64/kubectl.sha256
+
+openssl sha1 -sha256 kubectl
+
+sudo mv -v kubectl /usr/local/bin/ && \
+
+chmod +x /usr/local/bin/kubectl && \
+
 kubectl version --client=true --short=true && \
 #################### kubectl settings ###################
 
