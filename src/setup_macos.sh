@@ -12,9 +12,14 @@ brew upgrade hashicorp/tap/terraform && \
 
 #################### aws cli settings ###################
 curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg" && \
+
 sudo installer -pkg ./AWSCLIV2.pkg -target / && \
+
 which aws && \
+
 aws --version && \
+
+rm AWSCLIV2.pkg && \
 #################### aws cli settings ###################
 
 
@@ -29,13 +34,13 @@ sudo mv -v kubectl /usr/local/bin/ && \
 
 chmod +x /usr/local/bin/kubectl && \
 
-kubectl version --client=true --short=true && \
+kubectl version --client && \
 #################### kubectl settings ###################
 
 
 #################### eksctl settings ###################
 # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
-ARCH=arm64
+ARCH="arm64"
 PLATFORM=$(uname -s)_$ARCH
 
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz" && \
@@ -45,6 +50,11 @@ curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_ch
 
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz && \
 
-sudo mv /tmp/eksctl /usr/local/bin && \
-eksctl version
+sudo mv -v /tmp/eksctl /usr/local/bin && \
+
+eksctl version && \
 #################### eksctl settings ###################
+
+terraform login && \
+
+terraform init
