@@ -1,4 +1,15 @@
-#!/bin/bash
+#!/bin/zsh
+#################### terraform settings ###################
+brew tap hashicorp/tap
+
+brew install hashicorp/tap/terraform
+
+brew update
+
+brew upgrade hashicorp/tap/terraform
+#################### terraform settings ###################
+
+
 #################### aws cli settings ###################
 curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg" && \
 sudo installer -pkg ./AWSCLIV2.pkg -target / && \
