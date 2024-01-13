@@ -1,0 +1,13 @@
+secretGenerator:
+- name: mysql-pass
+  namespace: assignment
+  literals:
+  - password=test1234
+resources:
+  # - ./mysql/deployment.yaml
+  - ./mysql/statefulset.yaml
+  - ./mysql/storageclass.yaml
+  # - ./wordpress/deployment.yaml
+  - ./wordpress/hpa.yaml
+  - ./wordpress/statefulset.yaml
+  - ./wordpress/storageclass.yaml

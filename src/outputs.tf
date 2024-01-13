@@ -32,3 +32,7 @@ output "oidc_provider" {
 output "oidc_issuer" {
   value = module.eks.cluster_oidc_issuer_url
 }
+
+output "eks_cluster_cert" {
+  value = module.eks.cluster_certificate_authority_data
+}
