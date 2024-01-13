@@ -9,8 +9,8 @@ for i in "${check_list[@]}"; do
 done
 
 kubectl delete ns assignment && \
-kubectl config unset current-context
-kubectl config delete-cluster ${cluster_arn}
-kubectl config delete-context ${cluster_arn}
-kubectl config delete-user ${cluster_arn}
+kubectl config unset current-context && \
+kubectl config delete-cluster ${cluster_arn} && \
+kubectl config delete-context ${cluster_arn} && \
+kubectl config delete-user ${cluster_arn} && \
 terraform destroy -auto-approve && \
