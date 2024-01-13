@@ -35,6 +35,8 @@ sudo mv -v kubectl /usr/local/bin/ && \
 chmod +x /usr/local/bin/kubectl && \
 
 kubectl version --client && \
+
+rm kubectl.sha256 && \
 #################### kubectl settings ###################
 
 

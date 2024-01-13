@@ -56,13 +56,16 @@ sudo mv -v ./kubectl /usr/local/bin/kubectl && \
 sudo chmod +x /usr/local/bin/kubectl && \
 
 kubectl version --client && \
+
+rm kubectl.sha256 && \
 #################### kubectl settings ###################
 
 
 #################### eksctl settings ###################
 # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
-ARCH="amd64"
-PLATFORM=$(uname -s)_$ARCH
+ARCH="amd64" && \
+PLATFORM=$(uname -s)_$ARCH && \
+echo $PLATFORM && \
 
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz" && \
 
