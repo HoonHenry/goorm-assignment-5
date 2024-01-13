@@ -135,6 +135,7 @@ module "iam_eks_role" {
   }
 }
 
+# ref: https://andrewtarry.com/posts/terraform-eks-alb-setup-updated/
 provider "kubernetes" {
   host                   = module.eks.cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)

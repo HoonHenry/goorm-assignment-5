@@ -21,6 +21,11 @@ output "cluster_name" {
   value       = module.eks.cluster_name
 }
 
+# output "cluster_arn" {
+#   description = "Kubernetes Cluster ARN"
+#   value       = module.eks.cluster_arn
+# }
+
 output "oidc_id" {
   value = module.eks.oidc_provider_arn
 }

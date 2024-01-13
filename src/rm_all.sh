@@ -1,7 +1,6 @@
 #!/bin/bash
-region=$(terraform output -raw region)
-cluster_name=$(terraform output -raw cluster_name)
-check_list=($region, $cluster_name)
+cluster_arn=$(terraform output -raw cluster_arn)
+check_list=($cluster_arn)
 for i in "${check_list[@]}"; do
     if [ -z "$i" ]; then
       echo "data is empty"
@@ -10,5 +9,8 @@ for i in "${check_list[@]}"; do
 done
 
 kubectl delete ns assignment && \
-kubectl delete config ${cluster_name}
+kubectl config unset current-context
+kubectl config delete-cluster ${cluster_arn}
+kubectl config delete-context ${cluster_arn}
+kubectl config delete-user ${cluster_arn}
 terraform destroy -auto-approve && \
