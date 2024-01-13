@@ -4,7 +4,7 @@
 terraform {
 
   cloud {
-    organization = "k8x2"
+    organization = "semi-project"
     workspaces {
       name = "eks"
     }

@@ -7,7 +7,9 @@ updated 2024.01.14.03:19AM(KST)
 ## Prerequisites
 
 1. prepare a new terraform cloud id if you don't have one
-2. register a terraform organizaion name in the terraform cloud
+2. register a terraform organizaion name, named as "semi-project", in the terraform cloud
+    1) At the general setting of the registerd organization, please select the default execute mode as "local"
+    2) update the setting
 3. install aws cli
 4. install kubectl (please double-check the version and the architecture, such as amd64, arm64 etc., in shell script)
 5. install eksctl (please double-check the architecture, such as amd64, arm64 etc., in shell script)
