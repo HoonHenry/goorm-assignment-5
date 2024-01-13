@@ -34,7 +34,7 @@ sudo ./aws/install && \
 
 export PATH=/usr/local/bin:$PATH && \
 
-source ~/.bash_profile && \
+source ~/.bash_rc && \
 
 aws --version && \
 
