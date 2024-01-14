@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: wordpress
+  namespace: assignment
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: frontend
+  serviceName: wordpress
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: frontend
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress:6.2.1-apache
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: wordpress-mysql
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        - name: WORDPRESS_DB_USER
+          value: wordpress
+        ports:
+        - containerPort: 80
+          name: wordpress
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+        # the reason why resources should be assigned
+        # https://cmakkaya.medium.com/kubernetes-creating-and-testing-a-horizontal-pod-autoscaling-hpa-in-kubernetes-cluster-548f2378f0c3#f2a2
+        resources:
+          requests:
+            cpu: 100m
+            memory: 500Mi
+          limits:
+            cpu: 200m
+            memory: 1Gi
+  volumeClaimTemplates:
+  - metadata:
+      name: wordpress-persistent-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: ebs-sc
+      resources:
+        requests:
+          storage: 5Gi
