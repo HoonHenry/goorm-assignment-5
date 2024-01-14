@@ -1,6 +1,7 @@
 # goorm-assignment-5
 
 This is for AWS EKS.
+
 This version works in MacOS(arm64, local machine), and linux(aws Ubuntu 20.04/22.04, amd64)
 updated 2024.01.14.03:19AM(KST)
 
@@ -10,36 +11,36 @@ updated 2024.01.14.03:19AM(KST)
 
 2. Register a terraform organizaion name, named as `semi-project`, in the terraform cloud
     - At the general setting of the registerd organization, please select the default execute mode as "local"
-    ![organization list](/pics/tf-could-01.png)
+    ![organization list](/pics/tf-cloud-01.png)
 
     - Update the setting
-    ![default exccute mode](/pics/tf-could-02.png)
+    ![default execute mode](/pics/tf-cloud-02.png)
 
 3. Install [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 4. Install [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
-    > [!CAUTION]
-    > please double-check the version and the architecture, such as amd64, arm64 etc., in shell script
+    > **Please double-check the version and the architecture, such as amd64, arm64 etc., in shell script**
 
-5. Install [eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)
-    > [!IMPORTANT]
-    > please double-check the architecture, such as amd64, arm64 etc., in shell script
+6. Install [eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)
+    > **Please double-check the architecture, such as amd64, arm64 etc., in shell script**
 
-6. Register the terraform user token from the terraform cloud
-    > [!CAUTION]
-    > please create an user token, not team or organization token
+7. Register the terraform user token from the terraform cloud
+    > **Please create an user token, not team or organization token**
 
     ```bash
     #!/bin/bash
     terraform login
     # Please follow the output after the command
     ```
+    
     - [how to create a terraform user token](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-login)
 
-7. Register the AWS access key into the aws configure,
-    ![aws access key](/pics/tf-could-03.png)
+8. Register the AWS access key into the aws configure,
+    ![aws access key](/pics/tf-cloud-03.png)
     - [how to create an AWS access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey_CLIAPI)
 
+
+## Run the following command to setup prerequisites
 ```bash
 #!/bin/bash
 # Move to the root directory
@@ -60,6 +61,7 @@ terraform login
 # if you don't have one, please create one
 aws configure
 ```
+
 
 ## Set up the cluster
 
@@ -84,6 +86,7 @@ aws eks update-kubeconfig --region $(terraform output -raw region) --name $(terr
 # (Optional) Setup the metrics server
 ./setup_metrics_server.sh
 ```
+
 
 ## Destroy the entire cluster including k8s
 
