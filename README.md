@@ -6,26 +6,28 @@ updated 2024.01.14.03:19AM(KST)
 
 ## Prerequisites
 
-1. prepare a new terraform cloud id if you don't have one
-2. register a terraform organizaion name, named as "semi-project", in the terraform cloud
+1. Prepare a new terraform cloud id if you don't have one
+2. Register a terraform organizaion name, named as "semi-project", in the terraform cloud
     1) At the general setting of the registerd organization, please select the default execute mode as "local"
-    2) update the setting
-3. install aws cli
-4. install kubectl (please double-check the version and the architecture, such as amd64, arm64 etc., in shell script)
-5. install eksctl (please double-check the architecture, such as amd64, arm64 etc., in shell script)
-6. register the terraform token from the terraform cloud
-7. register the aws access token into the aws configure
-8. update aws eks credentials
+    2) Update the setting
+3. Install aws cli
+4. Install kubectl (please double-check the version and the architecture, such as amd64, arm64 etc., in shell script)
+5. Install eksctl (please double-check the architecture, such as amd64, arm64 etc., in shell script)
+6. Register the terraform token from the terraform cloud
+7. Register the aws access token into the aws configure
+8. Update aws eks credentials
 
 ```bash
 #!/bin/bash
-# move to the root directory
-cd src
+# Move to the root directory
+cd goorm-assignment-5/src
 
-# if using mac OS
+# If using mac OS
+# In the bare-metal
 ./setup_macos.sh # or run a few command that you need from the script file
 
-# if using linux(amd64, ubuntu 20.04)
+# If using linux(amd64, ubuntu 20.04)
+# In the bare-metal
 ./setup_linux.sh # or run a few command that you need from the script file
 ```
 
@@ -33,29 +35,39 @@ cd src
 
 ```bash
 #!/bin/bash
-# register the aws access token
+# Move to the root folder
+cd goorm-assignment-5/src
+
+# Login into the terraform cloud
+terraform login
+
+# Initialize the terraform
+terraform init
+
+# Register the AWS access token if you don't have one
 aws configure
 
-# run the terrafrom
+# Run the terrafrom
 terraform apply -auto-approve
 
-# update aws eks credentials
+# Update aws eks credentials into the local machine/aws instance
+# This will allows you to access/control the cluster in AWS EKS
 aws eks update-kubeconfig --region $(terraform output -raw region) --name $(terraform output -raw cluster_name)
 
-# run the k8s
+# Run the k8s
 ./start_k8s.sh
 
-# (optional) setup the metrics server
+# (Optional) Setup the metrics server
 ./setup_metrics_server.sh
 ```
 
-## destroy the cluster
+## Destroy the entire cluster including k8s
 
 ```bash
 #!/bin/bash
-cd src
+cd goorm-assignment-5/src
 
-# remove the namespace that includes all the k8s
+# Remove the namespace that includes all the k8s
 # and remove the aws eks credentials
 # and destroy terraform
 ./rm_all.sh

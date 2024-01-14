@@ -42,21 +42,22 @@ rm kubectl.sha256 && \
 
 #################### eksctl settings ###################
 # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
-ARCH="arm64"
-PLATFORM=$(uname -s)_$ARCH
+ARCH="arm64" && \
+PLATFORM=$(uname -s)_$ARCH && \
+echo $PLATFORM && \
 
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz" && \
 
 # (Optional) Verify checksum
-curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check && \
+curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | \
+    grep $PLATFORM | \
+    sha256sum --check && \
 
-tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz && \
+tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && \
+
+rm eksctl_$PLATFORM.tar.gz && \
 
 sudo mv -v /tmp/eksctl /usr/local/bin && \
 
-eksctl version && \
+eksctl version
 #################### eksctl settings ###################
-
-terraform login && \
-
-terraform init
