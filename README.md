@@ -6,16 +6,39 @@ updated 2024.01.14.03:19AM(KST)
 
 ## Prerequisites
 
-1. Prepare a new terraform cloud id if you don't have one
-2. Register a terraform organizaion name, named as "semi-project", in the terraform cloud
-    1) At the general setting of the registerd organization, please select the default execute mode as "local"
-    2) Update the setting
-3. Install aws cli
-4. Install kubectl (please double-check the version and the architecture, such as amd64, arm64 etc., in shell script)
-5. Install eksctl (please double-check the architecture, such as amd64, arm64 etc., in shell script)
-6. Register the terraform token from the terraform cloud
-7. Register the aws access token into the aws configure
-8. Update aws eks credentials
+1. Prepare a new [terraform cloud](https://app.terraform.io/session) id if you don't have one
+
+2. Register a terraform organizaion name, named as `semi-project`, in the terraform cloud
+    - At the general setting of the registerd organization, please select the default execute mode as "local"
+    ![organization list](/pics/tf-could-01.png)
+
+    - Update the setting
+    ![default exccute mode](/pics/tf-could-02.png)
+
+3. Install [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+4. Install kubectl
+    > [!CAUTION]
+    > please double-check the version and the architecture, such as amd64, arm64 etc., in shell script
+
+5. Install eksctl
+    > [!CAUTION]
+    > please double-check the architecture, such as amd64, arm64 etc., in shell script
+
+6. Register the terraform user token from the terraform cloud
+    > [!CAUTION]
+    > please create an user token, not team or organization token
+
+    ```bash
+    #!/bin/bash
+    terraform login
+    # Please follow the output after the command
+    ```
+    - [how to create a terraform user token](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-login)
+
+7. Register the AWS access key into the aws configure,
+    ![aws access key](/pics/tf-could-03.png)
+    - [how to create an AWS access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey_CLIAPI)
 
 ```bash
 #!/bin/bash
@@ -29,6 +52,13 @@ cd goorm-assignment-5/src
 # If using linux(amd64, ubuntu 20.04)
 # In the bare-metal
 ./setup_linux.sh # or run a few command that you need from the script file
+
+# Login into the terraform cloud
+terraform login
+
+# Register the AWS access token,
+# if you don't have one, please create one
+aws configure
 ```
 
 ## Set up the cluster
@@ -38,14 +68,8 @@ cd goorm-assignment-5/src
 # Move to the root folder
 cd goorm-assignment-5/src
 
-# Login into the terraform cloud
-terraform login
-
 # Initialize the terraform
 terraform init
-
-# Register the AWS access token if you don't have one
-aws configure
 
 # Run the terrafrom
 terraform apply -auto-approve
