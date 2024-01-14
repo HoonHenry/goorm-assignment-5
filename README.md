@@ -22,11 +22,11 @@ updated 2024.01.14.03:19AM(KST)
     > please double-check the version and the architecture, such as amd64, arm64 etc., in shell script
 
 5. Install [eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)
-    > [!CAUTION]
+    > [!IMPORTANT]
     > please double-check the architecture, such as amd64, arm64 etc., in shell script
 
 6. Register the terraform user token from the terraform cloud
-    > [!IMPORTANT]
+    > [!CAUTION]
     > please create an user token, not team or organization token
 
     ```bash
