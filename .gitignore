@@ -3,3 +3,4 @@ refs/
 *.bak*
 *.lock*
 old*/
+.DS_STORE
