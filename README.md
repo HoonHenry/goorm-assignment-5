@@ -17,16 +17,16 @@ updated 2024.01.14.03:19AM(KST)
 
 3. Install [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-4. Install kubectl
+4. Install [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
     > [!CAUTION]
     > please double-check the version and the architecture, such as amd64, arm64 etc., in shell script
 
-5. Install eksctl
+5. Install [eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)
     > [!CAUTION]
     > please double-check the architecture, such as amd64, arm64 etc., in shell script
 
 6. Register the terraform user token from the terraform cloud
-    > [!CAUTION]
+    > [!IMPORTANT]
     > please create an user token, not team or organization token
 
     ```bash
