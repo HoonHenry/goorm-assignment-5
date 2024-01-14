@@ -1,5 +1,0 @@
-refs/
-.terraform/
-*.bak*
-*.lock*
-old*/
