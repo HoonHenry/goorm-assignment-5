@@ -32,15 +32,15 @@ updated 2024.01.14.03:19AM(KST)
     terraform login
     # Please follow the output after the command
     ```
-    
+
     - [how to create a terraform user token](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-login)
 
 8. Register the AWS access key into the aws configure,
     ![aws access key](/pics/tf-cloud-03.png)
     - [how to create an AWS access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey_CLIAPI)
 
-
 ## Run the following command to setup prerequisites
+
 ```bash
 #!/bin/bash
 # Move to the root directory
@@ -61,7 +61,6 @@ terraform login
 # if you don't have one, please create one
 aws configure
 ```
-
 
 ## Set up the cluster
 
@@ -86,7 +85,6 @@ aws eks update-kubeconfig --region $(terraform output -raw region) --name $(terr
 # (Optional) Setup the metrics server
 ./setup_metrics_server.sh
 ```
-
 
 ## Destroy the entire cluster including k8s
 
