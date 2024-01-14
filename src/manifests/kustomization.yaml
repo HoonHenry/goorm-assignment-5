@@ -4,6 +4,7 @@ secretGenerator:
   literals:
   - password=test1234
 resources:
+  - ./mysql/configmap.yaml
   - ./mysql/storageclass.yaml
   - ./mysql/pvc.yaml
   - ./mysql/service.yaml

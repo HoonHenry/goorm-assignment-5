@@ -7,3 +7,4 @@
 #done
 
 kubectl delete ns assignment
+kubectl delete sc ebs-sc ebs-sc-mysql
