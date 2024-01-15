@@ -10,10 +10,11 @@ updated 2024.01.14.03:19AM(KST)
 1. Prepare a new [terraform cloud](https://app.terraform.io/session) id if you don't have one
 
 2. Register a terraform organizaion name, named as `semi-project`, in the terraform cloud
-    - At the general setting of the registerd organization, please select the default execute mode as "local"
+    
+    - Update the setting
     ![organization list](/pics/tf-cloud-01.png)
 
-    - Update the setting
+    - At the general setting of the registerd organization, please select the default execute mode as "local"
     ![default execute mode](/pics/tf-cloud-02.png)
 
 3. Install [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
