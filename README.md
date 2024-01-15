@@ -11,7 +11,7 @@ updated 2024.01.14.03:19AM(KST)
 
 2. Register a terraform organizaion name, named as `semi-project`, in the terraform cloud
     
-    - Update the setting
+    - Create a new organization
     ![organization list](/pics/tf-cloud-01.png)
 
     - At the general setting of the registerd organization, please select the default execute mode as "local"
