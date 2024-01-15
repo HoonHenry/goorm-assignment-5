@@ -1,6 +1,14 @@
 # goorm-assignment-5
 
-This is for AWS EKS.
+## Description
+This project is to build a cluster in AWS EKS by using Terraform and Kubernetes. 
+
+It will create a EKS cluster with alb ingress controller and EBS CSI Driver in Terraform.
+
+The assignment is based on the following references
+
+* [ref1](https://andrewtarry.com/posts/terraform-eks-alb-setup-updated/), [ref2](https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks)
+    
 
 This project will work on the following OS.
 |OS|Platform|Architecutre|OS Version|Confirmed|
