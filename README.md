@@ -3,11 +3,11 @@
 This is for AWS EKS.
 
 This project will work on the following OS.
-|OS|Architecutre|OS Version|Confirmed|
-|:---:|:---:|:---:|:---:|
-|MacOS|Sonoma 14.2.1|arm64|:white_check_mark:|
-|Linux|AWS Ubuntu 20.04|amd64|:white_check_mark:|
-|Linux|AWS Ubuntu 22.04|amd64|:white_check_mark:|
+|OS|Platform|Architecutre|OS Version|Confirmed|
+|:---:|:---:|:---:|:---:|:---:|
+|MacOS|local|Sonoma 14.2.1|arm64|:white_check_mark:|
+|Linux|AWS|Ubuntu 20.04|amd64|:white_check_mark:|
+|Linux|AWS|Ubuntu 22.04|amd64|:white_check_mark:|
 
 updated 2024.01.14.03:19AM(KST)
 
