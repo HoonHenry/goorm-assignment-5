@@ -56,11 +56,11 @@ cd goorm-assignment-5/src
 
 # If using mac OS
 # In the bare-metal
-./setup_macos.sh # or run a few command that you need from the script file
+./setup_macos.sh # or run a few commands that you need from the script file
 
 # If using linux(amd64, ubuntu 20.04)
 # In the bare-metal
-./setup_linux.sh # or run a few command that you need from the script file
+./setup_linux.sh # or run a few commands that you need from the script file
 
 # Login into the terraform cloud
 terraform login
