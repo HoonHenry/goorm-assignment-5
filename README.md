@@ -1,19 +1,35 @@
 # goorm-assignment-5
 
-This is for AWS EKS.
+## Description
+This project is to build a cluster in AWS EKS by using Terraform and Kubernetes. 
 
-This version works in MacOS(arm64, local machine), and linux(aws Ubuntu 20.04/22.04, amd64)
+It will create a EKS cluster with alb ingress controller and EBS CSI Driver in Terraform.
+
+The assignment is based on the following references
+
+* [ref1](https://andrewtarry.com/posts/terraform-eks-alb-setup-updated/), [ref2](https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks)
+    
+
+This project will work on the following OS.
+|OS|Platform|Architecutre|OS Version|Confirmed|
+|:---:|:---:|:---:|:---:|:---:|
+|MacOS|local|Sonoma 14.2.1|arm64|:white_check_mark:|
+|Linux|AWS|Ubuntu 20.04|amd64|:white_check_mark:|
+|Linux|AWS|Ubuntu 22.04|amd64|:white_check_mark:|
+
 updated 2024.01.14.03:19AM(KST)
+
 
 ## Prerequisites
 
 1. Prepare a new [terraform cloud](https://app.terraform.io/session) id if you don't have one
 
 2. Register a terraform organizaion name, named as `semi-project`, in the terraform cloud
-    - At the general setting of the registerd organization, please select the default execute mode as "local"
+    
+    - Create a new organization
     ![organization list](/pics/tf-cloud-01.png)
 
-    - Update the setting
+    - At the general setting of the registerd organization, please select the default execute mode as "local"
     ![default execute mode](/pics/tf-cloud-02.png)
 
 3. Install [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
@@ -48,11 +64,11 @@ cd goorm-assignment-5/src
 
 # If using mac OS
 # In the bare-metal
-./setup_macos.sh # or run a few command that you need from the script file
+./setup_macos.sh # or run a few commands that you need from the script file
 
 # If using linux(amd64, ubuntu 20.04)
 # In the bare-metal
-./setup_linux.sh # or run a few command that you need from the script file
+./setup_linux.sh # or run a few commands that you need from the script file
 
 # Login into the terraform cloud
 terraform login
