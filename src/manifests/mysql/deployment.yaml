@@ -4,16 +4,16 @@ metadata:
   name: wordpress-mysql
   namespace: assignment
   labels:
-    app: wordpress
+    app: wp-mysql
 spec:
   selector:
     matchLabels:
-      app: wordpress
+      app: wp-mysql
       tier: mysql
   template:
     metadata:
       labels:
-        app: wordpress
+        app: wp-mysql
         tier: mysql
     spec:
       containers:

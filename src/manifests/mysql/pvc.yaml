@@ -4,11 +4,11 @@ metadata:
   name: mysql-pv-claim
   namespace: assignment
   labels:
-    app: wordpress
+    app: wp-mysql
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: ebs-sc-mysql
+  # storageClassName: ebs-sc-mysql
   resources:
     requests:
       storage: 5Gi

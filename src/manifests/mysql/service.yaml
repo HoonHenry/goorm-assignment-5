@@ -6,7 +6,7 @@ metadata:
   # name: mysql   # stateful set
   namespace: assignment
   labels:
-    app: wordpress
+    app: wp-mysql
     # app: mysql    # stateful set
     # app.kubernetes.io/name: mysql   # stateful set
 spec:
@@ -16,7 +16,7 @@ spec:
   clusterIP: None
   selector:
     # app: mysql    # stateful set
-    app: wordpress
+    app: wp-mysql
     tier: mysql
 ---
 # # 읽기용 MySQL 인스턴스에 연결하기 위한 클라이언트 서비스.

@@ -1,10 +1,15 @@
 #!/bin/bash
-declare -A check_list
-check_list["cluster_arn"]=$(terraform output -raw cluster_arn)
+# It works in bash < 4.0.0
+declare -a check_list
 
-for key in "${check_list[@]}"; do
-    if [ -z "$key" ]; then
-      echo "$key is empty"
+data="cluster_arn|$(terraform output -raw cluster_arn)"
+
+IFS=' ' read -ra check_list <<< "$data"
+
+for item in "${check_list[@]}"; do
+    IFS='|' read -ra item <<< "$item"
+    if [ -z "${item[1]}" ]; then
+      echo "${item[0]} is empty"
       exit 1
     fi
 done
